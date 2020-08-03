@@ -186,15 +186,3 @@ Database.create_table_order()
 Database.create_table_seller()
 Database.create_table_buyer()
 
-# print(Database.join_table())
-
-
-
-# Database.get_user_by_user_name('zaman')
-
-# print(Database.join_table())
-# Database.get_user_by_user_name('yasa')
-# Database.update_user_password('yasa', 44555666)
-# Database.remove_user("777777")
-# Database.join_table()
-# print(Database.select_food('armut'))
