@@ -1,16 +1,17 @@
 import sqlite3
 import time
 import datetime
-#from sql import Database
 import uuid
 
 conn = sqlite3.connect('properties.db', check_same_thread=False)
 c = conn.cursor()
 
 
-# c.execute(finduser,(ID.get(),))
+# Thanks to class Database, we can access the database with "from sql- import Database" from another document.
 
 class Database():
+
+# 6 tables are created: user, address, seller, buyer, food, orders
 
     @staticmethod
     def create_table_user():
@@ -68,6 +69,8 @@ class Database():
         conn.commit()
 
         print('Create table buyer finished successfully.')
+
+# Here we have the necessary quarries in order to manipulate database.
 
     @staticmethod
     def create_table_food():
@@ -198,6 +201,9 @@ Database.create_table_buyer()
 #print(Database.select_food('armut'))
 
 
+
+# At this part, OOP is used for more efficent useage of the database.
+
 db = Database()
 
 class User:
@@ -268,49 +274,32 @@ class Order(Food):
         self.food_name = Food.food_name
         db.insert_order(self)
 
+############# At this part application of the queries can be observed.
 
-User(user_name="sami", user_password="987978", name="qwe", surname="rwe") # okay
-# User.remove_user('sami') # okay
-# User.get_user("Yakup01")
-# User.update_user('zalim',9636969) # okay
-# Food('iskender') # okay
-# Address(address_type='company', street_name='hosdere', street_number='02', flat_no='05', city_name='Akara', zip_code='135654')
-# Order(Food.food_id)
-# print(A.name)
-# Food('lahmacun')
-# Order('lahmacun')
-# Seller()
-# Address(address_type='company', street_name='hosdere', street_number='2', flat_no='3', zip_code='12312', city_name='Ankara')
+#John12 = User(user_name="John12", user_password="789654", name="John", surname="yilmaz") # okay
 
-#Order(Food('cacık'))
-# User(user_name="mahmut", name="mert", surname="rwe", user_password='789654')
-#Seller(User(user_name="sami", user_password="987978", name="qwe", surname="rwe"),Address(address_type='company',
-# street_name='hosdere', street_number='2', flat_no='3', zip_code='12312', city_name='Ankara'))
-#A =User(user_name="sami", user_password="987978", name="qwe", surname="rwe")
-#B = Address(address_type='company', street_name='hosdere', street_number='2', flat_no='3', zip_code='12312', city_name='Ankara')
-#C = Seller(A,B)
+# Address1 = Address(address_type='Private', street_name='Żwirki i Wigury ', street_number='02', flat_no='05')
 
-#food1 =Food('döner')
-#food1 = Food('cacık')
-#order1 = Order(Food('çekirdek')),
-#a = Food('yasak ceviz')
-#order = Order(a)
-#address4 =Address(street_name='dfgg', street_number='14', flat_no='17')
-#user5 = User(user_name="güresci", user_password="1115562992", name="mero", surname="qewgh")
-#seller =Seller(User=user5, Address=address4)
-#buyer1 = Buyer(Order=order, User=user5, Address=address4)
-#Address(street_name='werrrt', address_type='company', street_number='33', flat_no='56')
+# User.update_user('zalim',9636969) 
 
+# John12 = User.get_user("John12")
+# print(John12)
 
-#User(user_name="atesli", user_password="89751", name="ibrahim", surname="tatlıses")
-#data= User.get_user('atesli')
-#print(data)
-#User.get_user('atesli')
-#User.update_user('musaa','888888')
-#User.remove_user('musaa')
+# User.remove_user('John12')
 
+# Food1 = Food('pierogi')
 
-#User.update_user('atesli', '123321123')
-#a = Food.get_food('elma')
-#print(a)
-#Order(a)
+# Order1 = Order(Food1)
+
+# Seller1 = Seller(John12,Address1)
+
+# Buyer1 = Buyer(Order=Order1, User=John12, Address=Address1)
+
+# pierogi = Food.get_food('pierogi')
+# print(pierogi)
+
+##############
+
+# This is an example of joining table.
+# joinedTable = Database.join_table()
+# print(joinedTable)
